@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "author": "Prof. Tiago Façanha",
+  "author": "Subgrupo-7",
   "editor": "wokwi",
   "parts": [
     {
@@ -14,16 +14,25 @@
     {
       "type": "wokwi-resistor",
       "id": "r4",
-      "top": 51.95,
-      "left": 451.2,
+      "top": 137.8,
+      "left": 306.35,
+      "rotate": 270,
       "attrs": { "value": "220" }
     },
     {
-      "type": "wokwi-led",
-      "id": "led1",
-      "top": 15.6,
-      "left": 532.2,
-      "attrs": { "color": "red", "flip": "1" }
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 191.8,
+      "left": 360.1,
+      "rotate": 180,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -74.4,
+      "left": 443.4,
+      "attrs": { "volume": "0.1" }
     }
   ],
   "connections": [
@@ -37,9 +46,13 @@
     [ "keypad1:R3", "pico:GP6", "green", [ "v67.2", "h201.3", "v-9.6" ] ],
     [ "keypad1:R2", "pico:GP7", "green", [ "v76.8", "h220.4", "v-268.8" ] ],
     [ "keypad1:R1", "pico:GP8", "green", [ "v86.4", "h240", "v-28.8" ] ],
-    [ "r4:2", "led1:A", "red", [ "v0" ] ],
-    [ "pico:GND.4", "led1:C", "black", [ "h-19.2", "v57.64", "h268.8", "v-67.2" ] ],
-    [ "r4:1", "pico:GP13", "red", [ "v48", "h-115.2", "v-48" ] ]
+    [ "bz1:2", "pico:GP21", "red", [ "h-0.4", "v19.2" ] ],
+    [ "bz1:1", "pico:GND.6", "black", [ "v9.6" ] ],
+    [ "pico:GND.4", "r4:2", "black", [ "h0" ] ],
+    [ "r4:1", "rgb1:COM", "black", [ "h0", "v19.2", "h48" ] ],
+    [ "pico:GP13", "rgb1:R", "red", [ "h0" ] ],
+    [ "pico:GP12", "rgb1:B", "blue", [ "h0" ] ],
+    [ "pico:GP11", "rgb1:G", "green", [ "h0" ] ]
   ],
   "dependencies": {}
 }
