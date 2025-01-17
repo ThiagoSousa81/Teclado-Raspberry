@@ -1,5 +1,11 @@
+// Anibal Maldonado: Código principal  - https://github.com/PhD-Anibal
+// Anibal Maldonado: LED Vermelho ao apertar 'A' - https://github.com/PhD-Anibal
+
 #include <stdio.h>
 #include "pico/stdlib.h"
+
+
+#define led_pin_red 13        // porta do pino 13 LED RGB Vermelho
 
 // Define os pinos do teclado
 uint columns[4] = {4, 3, 2, 1}; // Colunas conectadas aos GPIOs
@@ -44,10 +50,17 @@ char get_key() {
 int main() {
     stdio_init_all(); // Inicializa a comunicação serial
     init_keypad();    // Configura o teclado
+    gpio_init(led_pin_red);
+    gpio_set_dir(led_pin_red, GPIO_OUT);
 
     while (true) {
         char key = get_key(); // Lê a tecla pressionada
-        if (key) {            // Se uma tecla foi pressionada
+        if (key) {
+            switch (key) {
+                case 'A': gpio_put(led_pin_red, 1);
+                // por código para desligar outros LEDS
+                break;
+            }          
             printf("Tecla pressionada: %c\n", key);
         }
         sleep_ms(200); // Pequeno atraso para evitar leituras duplicadas
