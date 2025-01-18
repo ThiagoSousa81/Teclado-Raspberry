@@ -302,6 +302,11 @@ void canon(){
         stop_buzzer(BUZZER1);
 }
 
+void apagarTodosLeds(){
+    acendeLedRGB(1, 0, 0, 0);
+    acendeLedRGB(2, 0, 0, 0);
+    acendeLedRGB(3, 0, 0, 0);
+}
 
 int main() {
     stdio_init_all(); // Inicializa a comunicação serial
@@ -315,22 +320,55 @@ int main() {
     while (true) {
         char key = get_key(); // Lê a tecla pressionada
         if (key) {
+            apagarTodosLeds();
             switch (key) {
                 case 'A': 
-                acendeLedRGB(1, 1, 0, 0);
-                // por código para desligar outros LEDS
-                break;
+                    acendeLedRGB(1, 1, 0, 0);
+                    break;
                 case 'B': 
-                acendeLedRGB(1, 0, 1, 0);             
-                // por código para desligar outros LEDS
-                break;
+                    acendeLedRGB(2, 0, 1, 0);             
+                    break;
                 case 'C':
-                acendeLedRGB(1, 0, 0, 1);             
-                // por código para desligar outros LEDS
-                break;
+                    acendeLedRGB(3, 0, 0, 1);             
+                    break;
+                case 'D':
+                    acendeLedRGB(1, 1, 1, 0);
+                    acendeLedRGB(2, 0, 1, 0);
+                    acendeLedRGB(3, 0, 0, 1);
+                    break;
                 case '*':
-                canon();
-                break;
+                    canon();
+                    break;
+                case '0':
+                    acendeLedRGB(1, 1, 0, 0); // LED 1 vermelho
+                    break;
+                case '1':
+                    acendeLedRGB(1, 0, 1, 0); // LED 1 verde
+                    break;
+                case '2':
+                    acendeLedRGB(1, 0, 0, 1); // LED 1 azul
+                    break;
+                case '3':
+                    acendeLedRGB(2, 1, 0, 0); // LED 2 vermelho
+                    break;
+                case '4':
+                    acendeLedRGB(2, 0, 1, 0); // LED 2 verde
+                    break;
+                case '5':
+                    acendeLedRGB(2, 0, 0, 1); // LED 2 azul
+                    break;
+                case '6':
+                    acendeLedRGB(3, 1, 0, 0); // LED 3 vermelho
+                    break;
+                case '7':
+                    acendeLedRGB(3, 0, 1, 0); // LED 3 verde
+                    break;
+                case '8':
+                    acendeLedRGB(3, 0, 0, 1); // LED 3 azul
+                    break;
+                case '9':
+                    acendeLedRGB(1, 1, 1, 1); // LED 1 branco
+                    break;
             }          
             printf("Tecla pressionada: %c\n", key);
         }
