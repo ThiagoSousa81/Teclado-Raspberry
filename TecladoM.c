@@ -5,9 +5,17 @@
 #include "pico/stdlib.h"
 
 
-#define led_pin_red 22        // porta do pino 27 LED RGB Vermelho
-#define led_pin_green 21        // porta do pino 27 LED RGB Vermelho
-#define led_pin_blue 20        // porta do pino 27 LED RGB Vermelho
+#define led_pin_red1 27        // porta do pino 27 LED RGB Vermelho
+#define led_pin_green1 26        // porta do pino 26 LED RGB Verde
+#define led_pin_blue1 22        // porta do pino 22 LED RGB Azul
+
+#define led_pin_red2 21        // porta do pino 21 LED RGB Vermelho
+#define led_pin_green2 20        // porta do pino 20 LED RGB Verde
+#define led_pin_blue2 19        // porta do pino 19 LED RGB Azul
+
+#define led_pin_red3 18        // porta do pino 18 LED RGB Vermelho
+#define led_pin_green3 17        // porta do pino 17 LED RGB Verde
+#define led_pin_blue3 16        // porta do pino 16 LED RGB Azul
 
 // Define os pinos do teclado
 uint columns[4] = {4, 3, 2, 1}; // Colunas conectadas aos GPIOs
@@ -49,35 +57,71 @@ char get_key() {
     return 0; // Nenhuma tecla pressionada
 }
 
+void inicializaLedsRGB(){
+    // Primeiro LED RGB
+    gpio_init(led_pin_red1);
+    gpio_init(led_pin_green1);
+    gpio_init(led_pin_blue1);
+    gpio_set_dir(led_pin_red1, GPIO_OUT);
+    gpio_set_dir(led_pin_green1, GPIO_OUT);
+    gpio_set_dir(led_pin_blue1, GPIO_OUT);
+
+    // Segundo LED RGB
+    gpio_init(led_pin_red2);
+    gpio_init(led_pin_green2);
+    gpio_init(led_pin_blue2);
+    gpio_set_dir(led_pin_red2, GPIO_OUT);
+    gpio_set_dir(led_pin_green2, GPIO_OUT);
+    gpio_set_dir(led_pin_blue2, GPIO_OUT);
+
+    // Terceiro LED RGB
+    gpio_init(led_pin_red3);
+    gpio_init(led_pin_green3);
+    gpio_init(led_pin_blue3);
+    gpio_set_dir(led_pin_red3, GPIO_OUT);
+    gpio_set_dir(led_pin_green3, GPIO_OUT);
+    gpio_set_dir(led_pin_blue3, GPIO_OUT);
+}
+
+void acendeLedRGB(int led, int red, int green, int blue){
+    switch(led){
+        case 1:
+            gpio_put(led_pin_red1, red);
+            gpio_put(led_pin_green1, green);
+            gpio_put(led_pin_blue1, blue);
+            break;
+        case 2:
+            gpio_put(led_pin_red2, red);
+            gpio_put(led_pin_green2, green);
+            gpio_put(led_pin_blue2, blue);
+            break;
+        case 3:
+            gpio_put(led_pin_red3, red);
+            gpio_put(led_pin_green3, green);
+            gpio_put(led_pin_blue3, blue);
+            break;
+    }
+}
+
 int main() {
     stdio_init_all(); // Inicializa a comunicação serial
     init_keypad();    // Configura o teclado
-    gpio_init(led_pin_red);
-    gpio_set_dir(led_pin_red, GPIO_OUT);
-    gpio_init(led_pin_green);
-    gpio_set_dir(led_pin_green, GPIO_OUT);
-    gpio_init(led_pin_blue);
-    gpio_set_dir(led_pin_blue, GPIO_OUT);        
+    inicializaLedsRGB(); // Inicializa os LEDs RGB
 
     while (true) {
         char key = get_key(); // Lê a tecla pressionada
         if (key) {
             switch (key) {
                 case 'A': 
-                gpio_put(led_pin_red, 1);
-                gpio_put(led_pin_green, 0);
-                gpio_put(led_pin_blue, 0);
+                acendeLedRGB(1, 1, 0, 0);
                 // por código para desligar outros LEDS
                 break;
                 case 'B': 
-                gpio_put(led_pin_red, 0);
-                gpio_put(led_pin_green, 1);
-                gpio_put(led_pin_blue, 0);                // por código para desligar outros LEDS
+                acendeLedRGB(1, 0, 1, 0);             
+                // por código para desligar outros LEDS
                 break;
                 case 'C':
-                gpio_put(led_pin_red, 0);
-                gpio_put(led_pin_green, 0);
-                gpio_put(led_pin_blue, 1);                
+                acendeLedRGB(1, 0, 0, 1);             
                 // por código para desligar outros LEDS
                 break;                                
             }          
