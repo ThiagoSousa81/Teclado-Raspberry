@@ -3,11 +3,14 @@
 
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/gpio.h"
+#include "hardware/pwm.h"
 
 
 #define led_pin_red 22        // porta do pino 27 LED RGB Vermelho
 #define led_pin_green 21        // porta do pino 27 LED RGB Vermelho
 #define led_pin_blue 20        // porta do pino 27 LED RGB Vermelho
+#define BUZZER1 28              // define o pino 28 = Buzzer
 
 // Define os pinos do teclado
 uint columns[4] = {4, 3, 2, 1}; // Colunas conectadas aos GPIOs
@@ -49,6 +52,202 @@ char get_key() {
     return 0; // Nenhuma tecla pressionada
 }
 
+void init_pwm(uint gpio) {
+    gpio_set_function(gpio, GPIO_FUNC_PWM); // Configura o GPIO como PWM
+    uint slice_num = pwm_gpio_to_slice_num(gpio);
+    pwm_set_clkdiv(slice_num, 125.0f);     // Define o divisor do clock para 1 MHz
+    pwm_set_wrap(slice_num, 1000);        // Define o TOP para frequência de 1 kHz
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), 0); // Razão cíclica inicial
+    pwm_set_enabled(slice_num, true);     // Habilita o PWM
+}
+
+void set_buzzer_tone(uint gpio, uint freq) {
+    uint slice_num = pwm_gpio_to_slice_num(gpio);
+    uint top = 1000000 / freq;            // Calcula o TOP para a frequência desejada
+    pwm_set_wrap(slice_num, top);
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), top / 2); // 50% duty cycle
+}
+
+void stop_buzzer(uint gpio) {
+    uint slice_num = pwm_gpio_to_slice_num(gpio);
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), 0); // Desliga o PWM
+}
+
+void canon(){
+    set_buzzer_tone(BUZZER1, 395); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 352); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 395); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 352); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 395); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 248); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 265); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 298); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 352); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 265); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 298); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 167); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 167); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 167); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 147); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 167); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 147); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 132); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 147); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 167); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 177); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(500);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 247); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 265); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 247); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 197); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 223); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 247); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 265); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 297); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 330); 
+        sleep_ms(250);
+        stop_buzzer(BUZZER1);
+        set_buzzer_tone(BUZZER1, 265); 
+        sleep_ms(750);
+        stop_buzzer(BUZZER1);
+}
+
+
 int main() {
     stdio_init_all(); // Inicializa a comunicação serial
     init_keypad();    // Configura o teclado
@@ -57,7 +256,10 @@ int main() {
     gpio_init(led_pin_green);
     gpio_set_dir(led_pin_green, GPIO_OUT);
     gpio_init(led_pin_blue);
-    gpio_set_dir(led_pin_blue, GPIO_OUT);        
+    gpio_set_dir(led_pin_blue, GPIO_OUT);
+    gpio_init(BUZZER1);
+    gpio_set_dir(BUZZER1, GPIO_OUT);
+    init_pwm(BUZZER1);
 
     while (true) {
         char key = get_key(); // Lê a tecla pressionada
@@ -79,7 +281,10 @@ int main() {
                 gpio_put(led_pin_green, 0);
                 gpio_put(led_pin_blue, 1);                
                 // por código para desligar outros LEDS
-                break;                                
+                break;
+                case '*':
+                canon();
+                break;
             }          
             printf("Tecla pressionada: %c\n", key);
         }
