@@ -55,7 +55,7 @@ target_include_directories(TecladoM PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(TecladoM 
-        
+        hardware_pwm
         )
 
 pico_add_extra_outputs(TecladoM)
