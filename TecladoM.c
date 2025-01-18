@@ -5,7 +5,9 @@
 #include "pico/stdlib.h"
 
 
-#define led_pin_red 13        // porta do pino 13 LED RGB Vermelho
+#define led_pin_red 22        // porta do pino 27 LED RGB Vermelho
+#define led_pin_green 21        // porta do pino 27 LED RGB Vermelho
+#define led_pin_blue 20        // porta do pino 27 LED RGB Vermelho
 
 // Define os pinos do teclado
 uint columns[4] = {4, 3, 2, 1}; // Colunas conectadas aos GPIOs
@@ -52,14 +54,32 @@ int main() {
     init_keypad();    // Configura o teclado
     gpio_init(led_pin_red);
     gpio_set_dir(led_pin_red, GPIO_OUT);
+    gpio_init(led_pin_green);
+    gpio_set_dir(led_pin_green, GPIO_OUT);
+    gpio_init(led_pin_blue);
+    gpio_set_dir(led_pin_blue, GPIO_OUT);        
 
     while (true) {
         char key = get_key(); // Lê a tecla pressionada
         if (key) {
             switch (key) {
-                case 'A': gpio_put(led_pin_red, 1);
+                case 'A': 
+                gpio_put(led_pin_red, 1);
+                gpio_put(led_pin_green, 0);
+                gpio_put(led_pin_blue, 0);
                 // por código para desligar outros LEDS
                 break;
+                case 'B': 
+                gpio_put(led_pin_red, 0);
+                gpio_put(led_pin_green, 1);
+                gpio_put(led_pin_blue, 0);                // por código para desligar outros LEDS
+                break;
+                case 'C':
+                gpio_put(led_pin_red, 0);
+                gpio_put(led_pin_green, 0);
+                gpio_put(led_pin_blue, 1);                
+                // por código para desligar outros LEDS
+                break;                                
             }          
             printf("Tecla pressionada: %c\n", key);
         }

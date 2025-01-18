@@ -4,14 +4,6 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "wokwi-breadboard-mini",
-      "id": "bb1",
-      "top": -8.7,
-      "left": 454.7,
-      "rotate": 90,
-      "attrs": {}
-    },
-    {
       "type": "board-pi-pico-w",
       "id": "pico",
       "top": -108.85,
@@ -22,8 +14,8 @@
     {
       "type": "wokwi-resistor",
       "id": "r4",
-      "top": 51.95,
-      "left": 518.4,
+      "top": 13.55,
+      "left": 528,
       "attrs": { "value": "220" }
     },
     {
@@ -37,39 +29,53 @@
       "type": "wokwi-resistor",
       "id": "r1",
       "top": 109.55,
-      "left": 518.4,
+      "left": 643.2,
       "attrs": { "value": "220" }
     },
     {
       "type": "wokwi-rgb-led",
       "id": "rgb1",
-      "top": -43.2,
-      "left": 581.7,
+      "top": -14.4,
+      "left": 610.5,
       "rotate": 90,
       "attrs": { "common": "cathode" }
     },
     {
       "type": "wokwi-rgb-led",
       "id": "rgb2",
-      "top": 24,
-      "left": 581.7,
+      "top": 62.4,
+      "left": 610.5,
       "rotate": 90,
       "attrs": { "common": "cathode" }
     },
     {
       "type": "wokwi-rgb-led",
       "id": "rgb3",
-      "top": 81.6,
-      "left": 581.7,
+      "top": 110.4,
+      "left": 610.5,
       "rotate": 90,
       "attrs": { "common": "cathode" }
     },
     {
       "type": "wokwi-resistor",
       "id": "r2",
-      "top": -15.25,
-      "left": 518.4,
+      "top": 90.35,
+      "left": 537.6,
       "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -118.8,
+      "left": 531.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -63.25,
+      "left": 566.4,
+      "attrs": { "value": "1000" }
     }
   ],
   "connections": [
@@ -85,44 +91,14 @@
     [ "keypad1:R1", "pico:GP8", "green", [ "v86.4", "h240", "v-28.8" ] ],
     [ "pico:GND.8", "bz1:1", "black", [ "h0" ] ],
     [ "pico:GP28", "bz1:2", "red", [ "h0" ] ],
-    [ "bb1:8t.e", "bb1:8b.f", "red", [ "h0" ] ],
-    [ "bb1:10t.e", "bb1:10b.f", "green", [ "h0" ] ],
-    [ "bb1:11t.e", "bb1:11b.f", "blue", [ "h0" ] ],
-    [ "bb1:14t.e", "bb1:14b.f", "red", [ "h0" ] ],
-    [ "bb1:16t.e", "bb1:16b.f", "green", [ "h0" ] ],
-    [ "bb1:17t.e", "bb1:17b.f", "blue", [ "h0" ] ],
-    [ "bb1:1t.e", "bb1:1b.f", "red", [ "v0" ] ],
-    [ "bb1:3t.e", "bb1:3b.f", "green", [ "h0" ] ],
-    [ "bb1:4t.e", "bb1:4b.f", "blue", [ "h0" ] ],
-    [ "rgb1:R", "bb1:1t.a", "", [ "$bb" ] ],
-    [ "rgb1:COM", "bb1:2t.b", "", [ "$bb" ] ],
-    [ "rgb1:G", "bb1:3t.a", "", [ "$bb" ] ],
-    [ "rgb1:B", "bb1:4t.a", "", [ "$bb" ] ],
-    [ "rgb2:R", "bb1:8t.a", "", [ "$bb" ] ],
-    [ "rgb2:COM", "bb1:9t.b", "", [ "$bb" ] ],
-    [ "rgb2:G", "bb1:10t.a", "", [ "$bb" ] ],
-    [ "rgb2:B", "bb1:11t.a", "", [ "$bb" ] ],
-    [ "r1:1", "bb1:15b.g", "", [ "$bb" ] ],
-    [ "r1:2", "bb1:15t.c", "", [ "$bb" ] ],
-    [ "r4:1", "bb1:9b.g", "", [ "$bb" ] ],
-    [ "r4:2", "bb1:9t.c", "", [ "$bb" ] ],
-    [ "r2:1", "bb1:2b.g", "", [ "$bb" ] ],
-    [ "r2:2", "bb1:2t.c", "", [ "$bb" ] ],
-    [ "pico:GP27", "bb1:1b.j", "red", [ "h0" ] ],
-    [ "pico:GP26", "bb1:3b.j", "green", [ "h29.11", "v9.6" ] ],
-    [ "pico:GP22", "bb1:4b.j", "blue", [ "h0" ] ],
-    [ "pico:GP21", "bb1:8b.j", "red", [ "h57.91", "v19.2" ] ],
-    [ "pico:GP20", "bb1:10b.j", "green", [ "h48.31", "v28.8" ] ],
-    [ "bb1:11b.j", "pico:GP19", "blue", [ "h-38.4", "v-28.8" ] ],
-    [ "bb1:9b.h", "bb1:2b.h", "black", [ "h0" ] ],
-    [ "bb1:9b.i", "bb1:15b.i", "black", [ "h0" ] ],
-    [ "rgb3:R", "bb1:14t.a", "", [ "$bb" ] ],
-    [ "rgb3:COM", "bb1:15t.b", "", [ "$bb" ] ],
-    [ "rgb3:G", "bb1:16t.a", "", [ "$bb" ] ],
-    [ "rgb3:B", "bb1:17t.a", "", [ "$bb" ] ],
-    [ "pico:GP18", "bb1:14b.j", "red", [ "h29.11", "v48.04" ] ],
-    [ "pico:GP17", "bb1:16b.j", "green", [ "h19.51", "v48.04" ] ],
-    [ "bb1:17b.j", "pico:GP16", "blue", [ "h0" ] ]
+    [ "led1:A", "r3:1", "black", [ "v0" ] ],
+    [ "r3:2", "pico:GP27", "black", [ "v0" ] ],
+    [ "led1:C", "pico:GND.7", "red", [ "v0" ] ],
+    [ "r4:2", "rgb1:COM", "black", [ "v0" ] ],
+    [ "pico:GND.6", "r4:1", "black", [ "h0" ] ],
+    [ "pico:GP21", "rgb1:G", "green", [ "h0" ] ],
+    [ "pico:GP22", "rgb1:R", "green", [ "h0" ] ],
+    [ "pico:GP20", "rgb1:B", "green", [ "h0" ] ]
   ],
   "dependencies": {}
 }
