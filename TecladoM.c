@@ -429,7 +429,7 @@ while (true) {
                 stop_buzzer(BUZZER1);
                 break;
             case 'D':
-                acendeLedRGB(1, 1, 1, 0);
+                acendeLedRGB(1, 1, 0, 0);
                 acendeLedRGB(2, 0, 1, 0);
                 acendeLedRGB(3, 0, 0, 1);
                 set_buzzer_tone(BUZZER1, 587); // Frequência 587 Hz (Nota Ré)
