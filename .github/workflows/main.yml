@@ -27,7 +27,7 @@ jobs:
           echo "PICO_SDK_PATH=$(pwd)/pico-sdk" >> $GITHUB_ENV
 
       - name: Set project name
-        run: echo "PROJECT_NAME=seu_projeto" >> $GITHUB_ENV
+        run: echo "PROJECT_NAME=TecladoM" >> $GITHUB_ENV
 
       - name: Create build directory
         run: |
@@ -40,6 +40,10 @@ jobs:
           cd build
           make
 
+      - name: List build directory
+        run: |
+          ls -al build
+      
       - name: Save artifacts
         uses: actions/upload-artifact@v3
         with:
