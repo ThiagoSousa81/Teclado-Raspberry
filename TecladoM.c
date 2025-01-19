@@ -302,6 +302,94 @@ void canon(){
         stop_buzzer(BUZZER1);
 }
 
+void canon2() {
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 587); // D
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 698); // F
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 659); // E
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 587); // D
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 698); // F
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 659); // E
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 698); // F
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 659); // E
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 784); // G
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 587); // D
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 698); // F
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 659); // E
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 523); // C
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 698); // F
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 659); // E
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+    set_buzzer_tone(BUZZER1, 784); // G
+    sleep_ms(300);
+    stop_buzzer(BUZZER1);
+}
+
+
 void apagarTodosLeds(){
     acendeLedRGB(1, 0, 0, 0);
     acendeLedRGB(2, 0, 0, 0);
@@ -317,61 +405,117 @@ int main() {
     gpio_set_dir(BUZZER1, GPIO_OUT);
     init_pwm(BUZZER1);
 
-    while (true) {
-        char key = get_key(); // Lê a tecla pressionada
-        if (key) {
-            apagarTodosLeds();
-            switch (key) {
-                case 'A': 
-                    acendeLedRGB(1, 1, 0, 0);
-                    break;
-                case 'B': 
-                    acendeLedRGB(2, 0, 1, 0);             
-                    break;
-                case 'C':
-                    acendeLedRGB(3, 0, 0, 1);             
-                    break;
-                case 'D':
-                    acendeLedRGB(1, 1, 1, 0);
-                    acendeLedRGB(2, 0, 1, 0);
-                    acendeLedRGB(3, 0, 0, 1);
-                    break;
-                case '*':
-                    canon();
-                    break;
-                case '0':
-                    acendeLedRGB(1, 1, 0, 0); // LED 1 vermelho
-                    break;
-                case '1':
-                    acendeLedRGB(1, 0, 1, 0); // LED 1 verde
-                    break;
-                case '2':
-                    acendeLedRGB(1, 0, 0, 1); // LED 1 azul
-                    break;
-                case '3':
-                    acendeLedRGB(2, 1, 0, 0); // LED 2 vermelho
-                    break;
-                case '4':
-                    acendeLedRGB(2, 0, 1, 0); // LED 2 verde
-                    break;
-                case '5':
-                    acendeLedRGB(2, 0, 0, 1); // LED 2 azul
-                    break;
-                case '6':
-                    acendeLedRGB(3, 1, 0, 0); // LED 3 vermelho
-                    break;
-                case '7':
-                    acendeLedRGB(3, 0, 1, 0); // LED 3 verde
-                    break;
-                case '8':
-                    acendeLedRGB(3, 0, 0, 1); // LED 3 azul
-                    break;
-                case '9':
-                    acendeLedRGB(1, 1, 1, 1); // LED 1 branco
-                    break;
-            }          
-            printf("Tecla pressionada: %c\n", key);
+while (true) {
+    char key = get_key(); // Lê a tecla pressionada
+    if (key) {
+        apagarTodosLeds(); // Apaga todos os LEDs antes de acender um novo
+        switch (key) {
+             case 'A': 
+                acendeLedRGB(1, 1, 0, 0); // LED 1 vermelho
+                set_buzzer_tone(BUZZER1, 440); // Frequência 440 Hz (Nota Lá)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case 'B': 
+                acendeLedRGB(2, 0, 1, 0); // LED 2 verde
+                set_buzzer_tone(BUZZER1, 494); // Frequência 494 Hz (Nota Si)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case 'C':
+                acendeLedRGB(3, 0, 0, 1); // LED 3 azul
+                set_buzzer_tone(BUZZER1, 523); // Frequência 523 Hz (Nota Dó)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case 'D':
+                acendeLedRGB(1, 1, 1, 0);
+                acendeLedRGB(2, 0, 1, 0);
+                acendeLedRGB(3, 0, 0, 1);
+                set_buzzer_tone(BUZZER1, 587); // Frequência 587 Hz (Nota Ré)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '*':
+                canon(); // Função específica
+                set_buzzer_tone(BUZZER1, 659); // Frequência 659 Hz (Nota Mi)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '#':
+                canon2(); // Função específica
+                set_buzzer_tone(BUZZER1, 698); // Frequência 698 Hz (Nota Fá)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '0':
+                acendeLedRGB(1, 1, 0, 0); // LED 1 vermelho
+                set_buzzer_tone(BUZZER1, 698); // Frequência 698 Hz (Nota Fá)
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '1':
+                acendeLedRGB(1, 0, 1, 0); // LED 1 verde
+                set_buzzer_tone(BUZZER1, 293); // Nota Ré (D4) - 293 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '2':
+                acendeLedRGB(1, 0, 0, 1); // LED 1 azul
+                set_buzzer_tone(BUZZER1, 329); // Nota Mi (E4) - 329 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '3':
+                acendeLedRGB(2, 1, 0, 0); // LED 2 vermelho
+                set_buzzer_tone(BUZZER1, 349); // Nota Fá (F4) - 349 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '4':
+                acendeLedRGB(2, 0, 1, 0); // LED 2 verde
+                set_buzzer_tone(BUZZER1, 392); // Nota Sol (G4) - 392 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '5':
+                acendeLedRGB(2, 0, 0, 1); // LED 2 azul
+                set_buzzer_tone(BUZZER1, 440); // Nota Lá (A4) - 440 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '6':
+                acendeLedRGB(3, 1, 0, 0); // LED 3 vermelho
+                set_buzzer_tone(BUZZER1, 493); // Nota Si (B4) - 493 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '7':
+                acendeLedRGB(3, 0, 1, 0); // LED 3 verde
+                set_buzzer_tone(BUZZER1, 523); // Nota Dó (C5) - 523 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '8':
+                acendeLedRGB(3, 0, 0, 1); // LED 3 azul
+                set_buzzer_tone(BUZZER1, 587); // Nota Ré (D5) - 587 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            case '9':
+                acendeLedRGB(1, 1, 1, 1); // LED 1 branco
+                set_buzzer_tone(BUZZER1, 659); // Nota Mi (E5) - 659 Hz
+                sleep_ms(500);
+                stop_buzzer(BUZZER1);
+                break;
+            default:
+                printf("Tecla não associada: %c\n", key);
+                break;
         }
-        sleep_ms(200); // Pequeno atraso para evitar leituras duplicadas
+        stop_buzzer(BUZZER1); 
+        printf("Tecla pressionada: %c\n", key);
     }
+    sleep_ms(50); // Pequeno atraso para evitar leituras duplicadas
 }
+
+} 
