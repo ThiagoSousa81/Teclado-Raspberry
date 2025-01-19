@@ -14,10 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up CMake
-        run: sudo apt-get install -y cmake
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake gcc-arm-none-eabi build-essential
 
       - name: Install Raspberry Pi Pico SDK
         run: |
@@ -25,7 +27,7 @@ jobs:
           echo "PICO_SDK_PATH=$(pwd)/pico-sdk" >> $GITHUB_ENV
 
       - name: Set project name
-        run: echo "PROJECT_NAME=TecladoM" >> $GITHUB_ENV
+        run: echo "PROJECT_NAME=seu_projeto" >> $GITHUB_ENV
 
       - name: Create build directory
         run: |
